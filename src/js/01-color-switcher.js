@@ -1,3 +1,4 @@
+//функція зміни коліра
 function getRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
   }
@@ -13,8 +14,9 @@ let timerId = null;
 startBtn.addEventListener('click', onStartChangeColor);
 
 //функція змін коліру
-function onStartChangeColor() {
-    onBtnDisabled ()
+function onStartChangeColor(event) {
+    event.target.setAttribute("disabled", "");
+    stopBtn.removeAttribute("disabled");
     timerId = setInterval(() => {
     const color = getRandomHexColor();
     document.body.style.backgroundColor =`${color}`;
@@ -25,17 +27,8 @@ function onStartChangeColor() {
 stopBtn.addEventListener ('click', onStopChangeColor);
 
 //функція зупинки
-function onStopChangeColor () {
-    clearInterval(idInterval);
-    onBtnDisabled ()
-};
-//функція перемикання активної кнопки
-function onBtnDisabled () {
-    if (!startBtn.disabled) {
-      startBtn.disabled = true;
-      stopBtn.disabled = false
-    } else {
-      startBtn.disabled = false;
-      stopBtn.disabled = true
-    }
-  };
+function onStopChangeColor (event) {
+    clearInterval(timerId);
+    event.target.setAttribute("disabled", "");
+    startBtn.removeAttribute("disabled");
+}
