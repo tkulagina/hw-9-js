@@ -1,1 +1,0 @@
-{"mappings":"qhBAAA,IAAAA,EAAAC,EAAA,SAEAC,QAAQC,IAAIC,EAAAJ","sources":["src/js/03-promises.js"],"sourcesContent":["import Notiflix from 'notiflix';;\n\nconsole.log(Notiflix);\n"],"names":["$7Y9D8","parcelRequire","console","log","$parcel$interopDefault"],"version":3,"file":"03-promises.4e8691d8.js.map"}
