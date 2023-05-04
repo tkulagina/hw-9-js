@@ -41,25 +41,7 @@ const options = {
 //визиваємо календар
 flatpickr(dateTimeInput, options);
 
-//функція підрахунку таймера
-function convertMs(ms) {
-    // Number of milliseconds per unit of time
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
-  
-    // Remaining days
-    const days = Math.floor(ms / day);
-    // Remaining hours
-    const hours = Math.floor((ms % day) / hour);
-    // Remaining minutes
-    const minutes = Math.floor(((ms % day) % hour) / minute);
-    // Remaining seconds
-    const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-  
-    return { days, hours, minutes, seconds };
-  };
+
 
 //функція запуску таймера
 function startTimer() {
@@ -68,6 +50,7 @@ function startTimer() {
     getDeltaTime();
 };
 
+//функція обчіслювання
 function getDeltaTime() {
     timerId = setInterval(() => {
         delta = SELECTED_DATE - Date.now();
@@ -81,9 +64,35 @@ function getDeltaTime() {
         }, 1000);
 };
 
+//функція відображення
 function clockView(dateOffset) {
     daysValue.textContent = dateOffset.days;
     hoursValue.textContent = dateOffset.hours;
     minutesValue.textContent = dateOffset.minutes;
     secondsValue.textContent = dateOffset.seconds;
-}
+};
+
+//функція підрахунку таймера
+function convertMs(ms) {
+    // Number of milliseconds per unit of time
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+  
+    // Remaining days
+    const days = addLeadingZero(Math.floor(ms / day));
+    // Remaining hours
+    const hours = addLeadingZero(Math.floor((ms % day) / hour));
+    // Remaining minutes
+    const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
+    // Remaining seconds
+    const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
+  
+    return { days, hours, minutes, seconds };
+  }
+  
+  //функція додавання другої ціфри
+  function addLeadingZero(value) {
+    return String(value).padStart(2, '0');
+  }
