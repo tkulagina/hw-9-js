@@ -38,10 +38,9 @@ const options = {
   },
 };
 
+
 //визиваємо календар
 flatpickr(dateTimeInput, options);
-
-
 
 //функція запуску таймера
 function startTimer() {
@@ -58,10 +57,11 @@ function getDeltaTime() {
         
         if (delta <= 0) {
              clearInterval(timerId);
+             btnStart.disabled = false;                          
         } else {
             clockView(dateOffset);
         }
-        }, 1000);
+    }, 1000);
 };
 
 //функція відображення
