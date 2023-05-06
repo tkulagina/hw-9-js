@@ -57,11 +57,13 @@ function getDeltaTime() {
         
         if (delta <= 0) {
              clearInterval(timerId);
-             btnStart.disabled = false;                          
+             btnStart.disabled = false;
+             dateTimeInput.disabled = false;                      
         } else {
             clockView(dateOffset);
         }
     }, 1000);
+    
 };
 
 //функція відображення
