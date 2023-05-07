@@ -57,8 +57,8 @@ function getDeltaTime() {
         
         if (delta <= 0) {
              clearInterval(timerId);
-             btnStart.disabled = false;
-             dateTimeInput.disabled = false;                      
+             //btnStart.disabled = false;
+             //dateTimeInput.disabled = false;                      
         } else {
             clockView(dateOffset);
         }
