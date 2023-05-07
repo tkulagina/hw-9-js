@@ -51,12 +51,12 @@ function startTimer() {
 
 //функція обчіслювання
 function getDeltaTime() {
-    const timerId = setInterval(() => {
+    const timerId = setTimeout(() => {
         delta = SELECTED_DATE - Date.now();
         const dateOffset = convertMs(delta);
         
         if (delta <= 0) {
-             clearInterval(timerId);
+             clearTimeout(timerId);
              btnStart.disabled = false;
              dateTimeInput.disabled = false;                      
         } else {
